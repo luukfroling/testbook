@@ -2,7 +2,7 @@ const myDirective = {
   name: "mydirective",
   doc: "My new directive!",
   arg: { type: String, doc: "The word to display" },
-  run(data, vfile, ctx) {
+  async run(data, vfile, ctx) {
     console.log("Running my directive with data:", data);
     const word = data.arg
     const sentence = {
