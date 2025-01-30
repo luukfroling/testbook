@@ -2,13 +2,16 @@ const myDirective = {
   name: "mydirective",
   doc: "My new directive!",
   arg: { type: String, doc: "The word to display" },
-  run(data, vfile, ctx) {
+  async run(data, vfile, ctx) {
     console.log("Running my directive with data:", data);
     const word = data.arg
     const sentence = {
       type: "text",
       value: "The word you gave is: " + word,
     };
+    let json = await fetch("https://raw.githubusercontent.com/luukfroling/testbook/refs/heads/main/data/data.json?token=GHSAT0AAAAAAC6AET7PIE3YPKUQURKRLO6KZ44DXGQ");
+    let jsondata = await json.json();
+    console.log(jsondata);
     sentence.value = "The word you gave is: " + word;
     return [{type: "paragraph", children: [sentence]}];
   },
