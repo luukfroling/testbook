@@ -9,6 +9,13 @@ const myDirective = {
       type: "text",
       value: "The word you gave is: " + word,
     };
+
+    //fetch some data 
+    const data = await fetch('https://jsonplaceholder.typicode.com/posts');
+    const json = await data.json();
+    console.log(json);
+
+    sentence.value = "The word you gave is: " + word + " and the data fetched is: " + JSON.stringify(json);
     return [{type: "paragraph", children: [sentence]}];
   },
 };
