@@ -3,7 +3,7 @@ version: 1
 project:
   id: 8ee5c516-6a3e-4733-abf0-d96d994c732e
   plugins:
-  - src/plugin.mjs
+  - ./src/plugin.mjs
   # title:
   # description:
   # keywords: []
