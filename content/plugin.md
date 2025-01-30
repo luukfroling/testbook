@@ -2,3 +2,4 @@
 
 ```{mydirective} myword
 ```
+update
