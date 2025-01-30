@@ -9,9 +9,10 @@ const myDirective = {
       type: "text",
       value: "The word you gave is: " + word,
     };
-    let json = await fetch("https://github.com/luukfroling/testbook/blob/main/data/data.json");
+    let json = await fetch("https://raw.githubusercontent.com/luukfroling/testbook/main/data/data.json");
     let jsondata = await json.json();
     console.log(jsondata);
+
     sentence.value = "The word you gave is: " + word;
     return [{type: "paragraph", children: [sentence]}];
   },
