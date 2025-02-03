@@ -8,15 +8,14 @@ const myDirective = {
     const sentence = {
       type: "text",
       value: "The word you gave is: " + word,
+      test: "yes"
     };
     let json = await fetch("https://raw.githubusercontent.com/luukfroling/testbook/main/data/data.json");
     let jsondata = await json.json();
-    console.log(jsondata['likes']);
-
-    const val = "hey";
+    console.log(jsondata['likes']);    
 
     sentence.value = "The word you gave is: " + word;
-    return [{type: "html", value: val}];
+    return [{type: "paragraph", children: [sentence]}];
   },
 };
 
