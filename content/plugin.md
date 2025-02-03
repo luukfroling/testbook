@@ -3,8 +3,7 @@
 ```{mydirective} myword
 ```
 
-```{likeButtonDirective}
-```
+```{like-button}
 
 update
 
