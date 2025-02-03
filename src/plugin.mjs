@@ -7,6 +7,7 @@ const myDirective = {
     const sentence = {
       type: "text",
       value: "The word you gave is: " + word,
+      test: "This is a test"
     };
     return [{type: "paragraph", children: [sentence]}];
   },
