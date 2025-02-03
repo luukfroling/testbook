@@ -5,7 +5,7 @@ const myDirective = {
   run(data, vfile, ctx) {
     const word = data.arg
     const sentence = {
-      type: "text",
+      type: "button",
       value: "The word you gave is: " + word,
       test: "This is a test"
     };
