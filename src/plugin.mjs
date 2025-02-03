@@ -2,14 +2,12 @@ const myDirective = {
   name: "mydirective",
   doc: "My new directive!",
   arg: { type: String, doc: "The word to display" },
-  async run(data, vfile, ctx) {
-    console.log("Running my directive with data:", data);
+  run(data, vfile, ctx) {
     const word = data.arg
     const sentence = {
       type: "text",
       value: "The word you gave is: " + word,
     };
-
     return [{type: "paragraph", children: [sentence]}];
   },
 };
