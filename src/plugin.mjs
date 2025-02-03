@@ -5,15 +5,16 @@ const myDirective = {
   run(data, vfile, ctx) {
     const word = data.arg;
 
-    // Returning raw HTML using `type: "html"`
+    // Returning plain text as a paragraph
     return [
       {
-        type: "html",
-        value: `
-          <button>
-            Click me why is this not working: ${word}
-          </button>
-        `,
+        type: "paragraph",  // Using paragraph type for normal text
+        children: [
+          {
+            type: "text",  // Use text type for normal text
+            value: `Click me <b> why </b> is this not working: ${word}`,
+          },
+        ],
       },
     ];
   },
