@@ -12,17 +12,6 @@ const likeButtonDirective = {
         value: `
           <button id="likeButton">👍 Like</button>
           <p id="likeCount">Loading...</p>
-          <script>
-            async function fetchLikes() {
-              try {
-                let response = await fetch("https://raw.githubusercontent.com/luukfroling/testbook/main/data/data.json");
-                let json = await response.json();
-                document.getElementById("likeCount").innerText = "Likes: " + json.likes;
-              } catch (error) {
-                console.error("Error fetching likes:", error);
-              }
-            }
-          </script>
         `,
       };
   
@@ -36,6 +25,18 @@ const likeButtonDirective = {
   };
   
   export default likeButtonPlugin;
+
+//   <script>
+//     async function fetchLikes() {
+//       try {
+//         let response = await fetch("https://raw.githubusercontent.com/luukfroling/testbook/main/data/data.json");
+//         let json = await response.json();
+//         document.getElementById("likeCount").innerText = "Likes: " + json.likes;
+//       } catch (error) {
+//         console.error("Error fetching likes:", error);
+//       }
+//     }
+//   </script>
 
 
 // document.getElementById("likeButton").addEventListener("click", async () => {
