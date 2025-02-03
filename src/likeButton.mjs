@@ -14,8 +14,13 @@ const likeButtonDirective = {
           <p id="likeCount">Loading...</p>
         `,
       };
+
+      const val = `
+          <button id="likeButton">👍 Like</button>
+          <p id="likeCount">Loading...</p>
+        `
   
-      return [{ type: "html", children: [button] }];
+      return [{ type: "html", value: val }];
     },
   };
   
