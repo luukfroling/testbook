@@ -8,12 +8,9 @@ const myDirective = {
     const sentence = {
       type: "text",
       value: "The word you gave is: " + word,
-      test: "yes"
     };
-    let json = await fetch("https://raw.githubusercontent.com/luukfroling/testbook/main/data/data.json");
-    let jsondata = await json.json();
-    console.log(jsondata['likes']);    
-
+  
+    
     sentence.value = "The word you gave is: " + word;
     return [{type: "paragraph", children: [sentence]}];
   },
@@ -25,3 +22,7 @@ const plugin = {
   };
   
 export default plugin;
+
+  // let json = await fetch("https://github.com/luukfroling/testbook/blob/main/data/data.json");
+    // let jsondata = await json.json();
+    // console.log(jsondata);
