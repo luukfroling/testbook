@@ -1,10 +1,10 @@
 # My demo page
 There is a bunch of new text here
-```{mydirective} myword
+<!-- ```{mydirective} myword
 ```
 
 ```{like-button}
-```
+``` -->
 
 update
 
