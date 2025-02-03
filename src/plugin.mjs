@@ -9,7 +9,7 @@ const myDirective = {
     return [
       {
         type: "html",  // This ensures raw HTML is rendered
-        value: `Click me <button> why </button> is this not working: ${word}`,
+        value: `Click me <p id="hey"> why </p> is this not working: ${word}`,
       },
     ];
   },
