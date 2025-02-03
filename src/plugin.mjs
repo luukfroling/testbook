@@ -7,8 +7,7 @@ const myDirective = {
     
     return [
       {
-        type: "container",
-        kind: "div",
+        type: "paragraph",  // ✅ Use a paragraph instead of a container
         children: [
           {
             type: "text",
@@ -16,7 +15,7 @@ const myDirective = {
             data: {
               hName: "button", // ✅ Render as a <button>
               hProperties: {
-                onclick: "alert('You clicked me!')", // ✅ Add JavaScript event
+                onclick: "alert('You clicked me!')", // ✅ JavaScript event
                 style: "padding: 10px; font-size: 16px; cursor: pointer;",
               },
             },
