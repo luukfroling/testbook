@@ -14,4 +14,4 @@ site:
   template: book-theme
   options:
     extra_head:
-      - <script src="assets/js/custom.js"></script>  # Link to custom JS
+      - '<script src="assets/js/custom.js"></script>'  # Your custom JS file
