@@ -1,7 +1,7 @@
 // add a directive to the book which generates a like button, which looks like a button and sends a fetch request upon being clicked
 
 const likeButtonDirective = {
-    name: "likeButton",
+    name: "likeButtonDirective",
     doc: "A button that sends a fetch request upon being clicked",
     async run(data, vfile, ctx) {
       console.log("Running likeButton directive with data:", data);
@@ -56,3 +56,30 @@ const likeButtonDirective = {
 // });
 
 // fetchLikes();
+
+// const myDirective = {
+//     name: "mydirective",
+//     doc: "My new directive!",
+//     arg: { type: String, doc: "The word to display" },
+//     async run(data, vfile, ctx) {
+//       console.log("Running my directive with data:", data);
+//       const word = data.arg
+//       const sentence = {
+//         type: "text",
+//         value: "The word you gave is: " + word,
+//       };
+//       let json = await fetch("https://raw.githubusercontent.com/luukfroling/testbook/main/data/data.json");
+//       let jsondata = await json.json();
+//       console.log(jsondata['likes']);
+  
+//       sentence.value = "The word you gave is: " + word;
+//       return [{type: "paragraph", children: [sentence]}];
+//     },
+//   };
+  
+//   const plugin = {
+//       name: "My cool plugin",
+//       directives: [myDirective],
+//     };
+    
+//   export default plugin;
