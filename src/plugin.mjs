@@ -10,8 +10,8 @@ const myDirective = {
       {
         type: "html",
         value: `
-          <button onclick="alert('You clicked me!')" style="padding: 10px; font-size: 16px; cursor: pointer;">
-            Click me: ${word}
+          <button>
+            Click me why is this not working: ${word}
           </button>
         `,
       },
