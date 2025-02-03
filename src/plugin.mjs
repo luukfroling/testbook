@@ -13,8 +13,10 @@ const myDirective = {
     let jsondata = await json.json();
     console.log(jsondata['likes']);
 
+    const val = "hey";
+
     sentence.value = "The word you gave is: " + word;
-    return [{type: "paragraph", children: [sentence]}];
+    return [{type: "html", value: val}];
   },
 };
 
