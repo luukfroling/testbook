@@ -15,7 +15,7 @@ const likeButtonDirective = {
         `,
       };
   
-      return [{ type: "paragraph", children: [button] }];
+      return [{ type: "html", children: [button] }];
     },
   };
   
