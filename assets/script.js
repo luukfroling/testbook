@@ -5,9 +5,7 @@
 document.addEventListener("DOMContentLoaded", function() {
     let body;
     getLikes(body);
-    let a = document.createElement("a");
-    a.innerHTML = "👍 Like";
-    document.getElementsByClassName("flex items-center flex-grow w-auto")[0].appendChild(a)
+    
 });
 
 
@@ -32,6 +30,10 @@ let loadItem = (body, likes) => {
         document.body.innerHTML = body.replace(intermediateString, stringToReplace);;
         return setTimeout(() => loadItem(body, text), 1000);
     } else {
+        let a = document.createElement("a");
+        a.innerHTML = "👍" + likes;
+        a.target.style.border = '1px solid black';
+        document.getElementsByClassName("flex items-center flex-grow w-auto")[0].appendChild(a)
         return; 
     }
 }
