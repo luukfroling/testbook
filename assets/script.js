@@ -13,6 +13,7 @@ document.addEventListener("DOMContentLoaded", function() {
 */
 
 let loadItem = (body, text) => {
+    console.log(data, data['likes'], data.likes);
     body = document.body.innerHTML;
     let stringToFind = "Loading...";
     let intermediateString = "Loading.. "
@@ -37,7 +38,7 @@ let loadItem = (body, text) => {
 let getLikes = (body) => {
     fetch("https://raw.githubusercontent.com/luukfroling/testbook/main/data/data.json")
     .then(response => response.json())
-    .then(data => loadItem(body, data["likes"]))	
+    .then(data => loadItem(body, data))	
     .catch(error => console.error("Error loading JSON:", error));
 }
 
