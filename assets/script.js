@@ -96,6 +96,24 @@ let parseLikes = (data) => {
     return data[key] !== undefined ? data[key] : addPage().then(() => 0); // Ensure addPage() resolves before returning
 };
 
+// Add to the JSON file in the database
+let addPage = () => {
+    let URL = "https://jupyter-book-likes-default-rtdb.europe-west1.firebasedatabase.app/likes.json";
+
+    return fetch(URL, {
+        method: "PATCH",
+        body: JSON.stringify({ [document.location.pathname.replace(/\//g, "_")]: 1 }), // Start with 1 like
+        headers: {
+            "Content-Type": "application/json"
+        }
+    })
+    .then(() => 0) // Ensure the function returns a resolved value
+    .catch(error => {
+        console.error("Error initializing like count:", error);
+        return 0; // Ensure function still returns 0 in case of failure
+    });
+};
+
 let changeLike = (change) => {
     fetch(databaseURL, {
         method: "GET"
