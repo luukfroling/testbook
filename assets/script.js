@@ -2,12 +2,12 @@
 * 03/02/2025, Luuk Fröling
 */
 
-let hasLiked = false; 
-let likes
+let likes;
+let hasLiked;
 
 document.addEventListener("DOMContentLoaded", function() {
     let path = document.location.pathname.replace(/\//g, "_");
-    let hasLiked = JSON.parse(localStorage.getItem(`hasLiked_${path}`)) || false;
+    hasLiked = JSON.parse(localStorage.getItem(`hasLiked_${path}`)) || false;
 
     console.log("Has liked:", hasLiked); 
     
