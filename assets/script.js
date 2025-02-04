@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", function() {
     // see if user has liked => use local storage as we are using a non userdata database. 
     hasLiked = localStorage.getItem('hasLiked');
     hasLiked == null ? localStorage.setItem('hasLiked', JSON.stringify(false)) : null;
-
+    console.log("hello");
     let body;
     getLikes(body);
     
