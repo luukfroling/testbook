@@ -13,19 +13,19 @@ document.addEventListener("DOMContentLoaded", function() {
 */
 
 let loadItem = (body, text) => {
-    console.log(text, text['likes'], text.likes);
+    
     body = document.body.innerHTML;
     let stringToFind = "Loading...";
     let intermediateString = "Loading.. "
-    let stringToReplace = "Likes: " + text;
+    let stringToReplace = "Likes: " + text['likes'];
     
     //Find string in current page
     if(body.includes(stringToFind)){
         document.body.innerHTML = body.replace(stringToFind, intermediateString);
-        return setTimeout(loadItem, 1000);
+        return setTimeout(loadItem(body, text), 1000);
     } else if(body.includes(intermediateString)){
         document.body.innerHTML = body.replace(intermediateString, stringToReplace);;
-        return setTimeout(loadItem, 1000);
+        return setTimeout(loadItem(body, text), 1000);
     } else {
         return; 
     }
