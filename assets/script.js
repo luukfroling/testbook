@@ -19,12 +19,15 @@ let loadItem = (body) => {
     if(body.includes(stringToFind)){
         body.replace(stringToFind, intermediateString);
         document.body.innerHTML = body;
+        console.log("Loading likes ... found");
         return setTimeout(loadItem, 1000);
     } else if(body.includes(intermediateString)){
+        console.log("Loading likes ... intermediate found");
         body.replace(intermediateString, stringToReplace);
         document.body.innerHTML = body;
         return setTimeout(loadItem, 1000);
     } else {
+        console.log("Loading likes ... not found");
         return; 
     }
 }
