@@ -33,7 +33,11 @@ let loadItem = (body, likes) => {
     } else {
         let a = document.createElement("a");
         a.innerHTML = "👍" + likes;
-        document.getElementsByClassName("flex items-center flex-grow w-auto")[0].appendChild(a)
+        a.onclick = () => {
+            a.innerHTML = "👍" + (likes + 1);
+            console.log("clicked!!");	
+        }
+        document.getElementsByClassName("flex items-center flex-grow w-auto")[0].prepend(a);
         return; 
     }
 }
