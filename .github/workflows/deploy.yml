@@ -45,7 +45,7 @@ jobs:
       - name: Inject JavaScript into HTML files
         run: |
           # Find all HTML files and inject the script tag with module syntax for JavaScript
-          modified_files=$(find ./_build/html -type f -name "*.html" -exec sed -i '/<\/head>/i import { greet } from "\/assets\/utils.js"; greet();' {} \; -print | wc -l)
+          modified_files=$(find ./_build/html -type f -name "*.html" -exec sed -i '/<\/head>/i console.log("injected!"); const greet = require('./greet.js'); greet();' {} \; -print | wc -l)
           echo "$modified_files HTML files were modified to include the script."
 
       - name: Upload artifact

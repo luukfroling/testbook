@@ -6,6 +6,7 @@ There is a bunch of new text here
 
 copying over 
 and adding script
+added the things
 update
 
 - add plugin for button 
