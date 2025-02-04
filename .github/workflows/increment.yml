@@ -1,0 +1,30 @@
+name: Increment Likes
+on:
+  workflow_dispatch:  # Allows manual trigger via API call
+
+jobs:
+  update_likes:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+
+      - name: Increment likes in JSON
+        run: |
+          FILE="data/data.json"
+          jq '.likes += 1' "$FILE" > temp.json && mv temp.json "$FILE"
+
+      - name: Commit and push changes
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions@github.com"
+          git add data/data.json
+          git commit -m "Increment likes"
+          git push
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
