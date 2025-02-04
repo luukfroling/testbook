@@ -4,7 +4,6 @@
 
 document.addEventListener("DOMContentLoaded", function() {
     let body;
-    loadItem(body)  
     getLikes(body);
 });
 
@@ -17,7 +16,7 @@ let loadItem = (body, text) => {
     body = document.body.innerHTML;
     let stringToFind = "Loading...";
     let intermediateString = "Loading.. "
-    let stringToReplace = "Likes: 0";
+    let stringToReplace = "Likes: " + text;
     
     //Find string in current page
     if(body.includes(stringToFind)){
@@ -38,7 +37,7 @@ let loadItem = (body, text) => {
 let getLikes = (body) => {
     fetch("https://raw.githubusercontent.com/luukfroling/testbook/main/data/data.json")
     .then(response => response.json())
-    .then(data => console.log(data))
+    .then(data => loadItem(body, data["likes"]))	
     .catch(error => console.error("Error loading JSON:", error));
 }
 
