@@ -1,6 +1,6 @@
 //find and replace "loading likes ..." with "Likes: 0"
 
-document.addEventListener("change", function() {
+document.body.addEventListener("change", function() {
     let stringToFind = "Loading...";
     let stringToReplace = "Likes: 0";
     
