@@ -2,5 +2,4 @@
 
 alert("its working!");
 console.log("its working!");
-return true;
 
