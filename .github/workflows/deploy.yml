@@ -37,6 +37,11 @@ jobs:
         run: npm install -g mystmd
       - name: Build HTML Assets
         run: myst build --html
+      - name: Copy JavaScript file to _build/html/assets
+        run: |
+          mkdir -p ./_build/html/assets
+          cp ./assets/script.js ./_build/html/assets/script.js  # Adjust path as needed
+          echo "JavaScript file copied to _build/html/assets/script.js"
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
