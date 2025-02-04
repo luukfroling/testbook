@@ -2,7 +2,13 @@
 * 03/02/2025, Luuk Fröling
 */
 
+let hasLiked = false; 
+
 document.addEventListener("DOMContentLoaded", function() {
+    // see if user has liked => use local storage as we are using a non userdata database. 
+    hasLiked = localStorage.getItem('hasLiked');
+    hasLiked == null ? localStorage.setItem('hasLiked', JSON.stringify(false)) : null;
+
     let body;
     getLikes(body);
     
@@ -33,13 +39,21 @@ let loadItem = (body, likes) => {
     } else {
         let a = document.createElement("a");
         a.innerHTML = "👍" + likes;
-        a.onclick = () => {
-            likes += 1;
-            a.innerHTML = "👍" + (likes);
+
+        if(!hasLiked){
+            a.onclick = () => {
+                likes += 1;
+                a.innerHTML = "👍" + (likes) + " ";
+                a.style.backgroundColor = "#90ee90";
+                localStorage.setItem('hasLiked', JSON.stringify(true));
+                a.onclick = null;
+                addLike()
+            }
+        } else {
             a.style.backgroundColor = "#90ee90";
             a.onclick = null;
-            addLike()
         }
+        
         document.getElementsByClassName("flex items-center flex-grow w-auto")[0].appendChild(a);
         return; 
     }
