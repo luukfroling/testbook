@@ -44,9 +44,10 @@ jobs:
 
       - name: Inject JavaScript into HTML files
         run: |
-          # Find all HTML files and inject the script tag, then count how many files were modified
-          modified_files=$(find ./_build/html -type f -name "*.html" -exec sed -i '/<\/head>/i <script src="assets/script.js"></script>' {} \; -print | wc -l)
+          # Find all HTML files and inject the script tag with module syntax for JavaScript
+          modified_files=$(find ./_build/html -type f -name "*.html" -exec sed -i '/<\/head>/i <script type="module">import { greet } from "\/assets\/script.js"; greet();<\/script>' {} \; -print | wc -l)
           echo "$modified_files HTML files were modified to include the script."
+
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
