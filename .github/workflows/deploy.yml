@@ -39,7 +39,7 @@ jobs:
         run: myst build --html
       - name: Copy JavaScript file to _build/html/assets
         run: |
-          mkdir -p ./_build/html/assets
+          mkdir -p ./_build/html/build/assets
           cp ./assets/script.js ./_build/html/build/assets/script.js  # Adjust path as needed
           echo "JavaScript file copied to _build/html/assets/script.js"
       - name: Inject JavaScript into HTML files
