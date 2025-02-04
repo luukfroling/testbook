@@ -6,9 +6,17 @@ let hasLiked = false;
 let likes
 
 document.addEventListener("DOMContentLoaded", function() {
-    // see if user has liked => use local storage as we are using a non userdata database. 
-    hasLiked = localStorage.getItem('hasLiked');
-    hasLiked == null ? localStorage.setItem('hasLiked', JSON.stringify(false)) : null;
+    
+    let hasLiked = localStorage.getItem('hasLiked');
+
+    if (hasLiked === null) {
+        localStorage.setItem('hasLiked', JSON.stringify(false));
+        hasLiked = false;
+    } else {
+        hasLiked = JSON.parse(hasLiked); // Convert string "false" or "true" to boolean
+    }
+
+    console.log("Has liked:", hasLiked); // Correctly shows true or false as a boolean
     
     let body;
     getLikes(body);
