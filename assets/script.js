@@ -6,42 +6,37 @@ let hasLiked = false;
 let likes
 
 document.addEventListener("DOMContentLoaded", function() {
-    
-    let hasLiked = localStorage.getItem('hasLiked');
+    let path = document.location.pathname.replace(/\//g, "_");
+    let hasLiked = JSON.parse(localStorage.getItem(`hasLiked_${path}`)) || false;
 
-    if (hasLiked === null) {
-        localStorage.setItem('hasLiked', JSON.stringify(false));
-        hasLiked = false;
-    } else {
-        hasLiked = JSON.parse(hasLiked); // Convert string "false" or "true" to boolean
-    }
-
-    console.log("Has liked:", hasLiked); // Correctly shows true or false as a boolean
+    console.log("Has liked:", hasLiked); 
     
     let body;
     getLikes(body);
-    
 });
 
 let onLike = () => {
+    let path = document.location.pathname.replace(/\//g, "_");
     let likeButton = document.getElementById("likeButton");
     likeButton.style.backgroundColor = "#90ee90";
     likeButton.onclick = onDislike;
     likes += 1;
-    likeButton.innerHTML = "👍" + (likes) + " ";
-    changeLike(1)
-    localStorage.setItem('hasLiked', JSON.stringify(true));
+    likeButton.innerHTML = "👍" + likes + " ";
+    changeLike(1);
+    localStorage.setItem(`hasLiked_${path}`, JSON.stringify(true));
 }
 
 let onDislike = () => {
+    let path = document.location.pathname.replace(/\//g, "_");
     let likeButton = document.getElementById("likeButton");
     likeButton.style.backgroundColor = "#ffffff";
     likeButton.onclick = onLike;
     likes -= 1;
     likeButton.innerHTML = "👍" + likes + " ";
     changeLike(-1);
-    localStorage.setItem('hasLiked', JSON.stringify(false));
+    localStorage.setItem(`hasLiked_${path}`, JSON.stringify(false));
 }
+
 
 
 /* because jupyter book next seems to reload the page after loading it the first time,
