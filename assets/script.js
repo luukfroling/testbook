@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", function() {
 */
 
 let loadItem = (body, text) => {
-    console.log(data, data['likes'], data.likes);
+    console.log(text, text['likes'], text.likes);
     body = document.body.innerHTML;
     let stringToFind = "Loading...";
     let intermediateString = "Loading.. "
