@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", function() {
 let loadItem = (body) => {
     body = document.body.innerHTML;
     let stringToFind = "Loading...";
-    let intermediateString = "Loading .."
+    let intermediateString = "Loading.. "
     let stringToReplace = "Likes: 0";
     
     //Find string in current page
