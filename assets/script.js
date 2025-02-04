@@ -49,7 +49,9 @@ let loadItem = (body, likes) => {
                 a.onclick = null;
                 addLike()
             }
-        } else {
+        } 
+        if(hasLiked){
+            console.log("has liked!!");
             a.style.backgroundColor = "#90ee90";
             a.onclick = null;
         }
