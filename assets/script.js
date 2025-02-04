@@ -8,11 +8,31 @@ document.addEventListener("DOMContentLoaded", function() {
     // see if user has liked => use local storage as we are using a non userdata database. 
     hasLiked = localStorage.getItem('hasLiked');
     hasLiked == null ? localStorage.setItem('hasLiked', JSON.stringify(false)) : null;
-    console.log("hello");
+    
     let body;
     getLikes(body);
     
 });
+
+let onLike = () => {
+    let likeButton = document.getElementById("likeButton");
+    likeButton.style.backgroundColor = "#90ee90";
+    likeButton.onclick = onDislike;
+    likeButton.innerHTML = "👍" + (likes+1) + " ";
+    likes += 1;
+    changeLike(1)
+    localStorage.setItem('hasLiked', JSON.stringify(true));
+}
+
+let onDislike = () => {
+    let likeButton = document.getElementById("likeButton");
+    likeButton.style.backgroundColor = "#ffffff";
+    likeButton.onclick = onLike;
+    likeButton.innerHTML = "👍" + likes + " ";
+    likes -= 1;
+    changeLike(-1);
+    localStorage.setItem('hasLiked', JSON.stringify(false));
+}
 
 
 /* because jupyter book next seems to reload the page after loading it the first time,
@@ -39,21 +59,17 @@ let loadItem = (body, likes) => {
     } else {
         let a = document.createElement("a");
         a.innerHTML = "👍" + likes;
+        a.id = "likeButton";
 
         if(!hasLiked){
-            a.onclick = () => {
-                likes += 1;
-                a.innerHTML = "👍" + (likes) + " ";
-                a.style.backgroundColor = "#90ee90";
-                localStorage.setItem('hasLiked', JSON.stringify(true));
-                a.onclick = null;
-                addLike()
-            }
+            console.log("has not liked!!");
+            a.style.backgroundColor = "#ffffff";
+            a.onclick = onLike;
         } 
         if(hasLiked){
             console.log("has liked!!");
             a.style.backgroundColor = "#90ee90";
-            a.onclick = null;
+            a.onclick = onDislike;
         }
         
         document.getElementsByClassName("flex items-center flex-grow w-auto")[0].appendChild(a);
@@ -74,14 +90,14 @@ let getLikes = (body) => {
     .catch(error => console.error("Error loading JSON:", error));
 }
 
-let addLike = () => {
+let changeLike = (change) => {
     fetch(databaseURL, {
         method: "GET"
        })
        .then(response => response.json())
        .then(data => {
            // Increment the likes value
-           let newLikes = data ? data + 1 : 1; // Update the database with the new likes count
+           let newLikes = data ? data + change : 1; // Update the database with the new likes count
            fetch(databaseURL, {
                method: "PUT", // Overwrite with new value
                body: JSON.stringify(newLikes),
@@ -95,4 +111,5 @@ let addLike = () => {
            .catch(error => console.error("Error updating likes:", error));})
        .catch(error => console.error("Error fetching current likes:", error));   
 }
+
 

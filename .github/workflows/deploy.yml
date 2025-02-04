@@ -50,6 +50,11 @@ jobs:
           # Find all HTML files and inject the script tag with module syntax for JavaScript
           modified_files=$(find ./_build/html -type f -name "*.html" -exec sed -i '/<\/head>/i console.log("injected!"); </script><script src="./assets/script.js">' {} \; -print | wc -l)
           echo "$modified_files HTML files were modified to include the script."
+      - name: Add Cache-Busting to Scripts & CSS
+        run: |
+          HASH=$(git rev-parse --short HEAD)
+          find ./_build/html -type f -name "*.html" -exec sed -i "s|script.js|script.js?v=$HASH|g" {} \;
+          find ./_build/html -type f -name "*.html" -exec sed -i "s|style.css|style.css?v=$HASH|g" {} \;
       #end of custom javascript
 
       - name: Upload artifact
