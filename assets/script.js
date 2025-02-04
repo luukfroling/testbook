@@ -58,7 +58,7 @@ let loadItem = (body, _likes) => {
         document.body.innerHTML = body.replace(intermediateString, stringToReplace);;
         return setTimeout(() => loadItem(body, likes), 1000);
     } else {
-        let a = document.createElement("a");
+        let a = document.createElement("button");
         a.innerHTML = "👍" + likes;
         a.id = "likeButton";
 
