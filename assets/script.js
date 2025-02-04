@@ -1,21 +1,31 @@
 //find and replace "loading likes ..." with "Likes: 0"
 document.addEventListener("DOMContentLoaded", function() {
     
-        //wait 1 second 
-        setTimeout(function() {
-            console.log("Waited 1 second");
-        }, 1000);
+    // set 1 second delay and keep repeating
+    let body;
+    loadItem(body)
 
-        let stringToFind = "Loading...";
-        let stringToReplace = "Likes: 0";
-        
-        //Find string in current page
-        let body = document.body.innerHTML;
-        let bodyNew = body.replace(stringToFind, stringToReplace);
-        document.body.innerHTML = bodyNew;
         
   
 });
+
+let loadItem = (body) => {
+    body = document.body.innerHTML;
+    let stringToFind = "Loading data...";
+    let intermediateString = "Loading data.."
+    let stringToReplace = "Likes: 0";
+    
+    //Find string in current page
+    if(body.includes(stringToFind)){
+        body.replace(stringToFind, intermediateString);
+        return setTimeout(loadItem, 1000);
+    } else if(body.includes(intermediateString)){
+        body.replace(intermediateString, stringToReplace);
+        return setTimeout(loadItem, 1000);
+    } else {
+        return; 
+    }
+}
 
 
 
