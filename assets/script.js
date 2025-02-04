@@ -22,10 +22,10 @@ let loadItem = (body, text) => {
     //Find string in current page
     if(body.includes(stringToFind)){
         document.body.innerHTML = body.replace(stringToFind, intermediateString);
-        return setTimeout(loadItem(body, text), 1000);
+        return setTimeout(() => loadItem(body, text), 1000);
     } else if(body.includes(intermediateString)){
         document.body.innerHTML = body.replace(intermediateString, stringToReplace);;
-        return setTimeout(loadItem(body, text), 1000);
+        return setTimeout(() => loadItem(body, text), 1000);
     } else {
         return; 
     }
