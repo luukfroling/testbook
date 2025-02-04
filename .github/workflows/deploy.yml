@@ -37,6 +37,16 @@ jobs:
         run: npm install -g mystmd
       - name: Build HTML Assets
         run: myst build --html
+      
+      - name: Copy JavaScript file to _build/html/assets
+        run: |
+          mkdir -p ./_build/html/assets
+          cp ./assets/script.js ./_build/html/assets/script.js  # Adjust path as needed
+
+      - name: Inject JavaScript into HTML files
+        run: |
+          # Inject the script into all generated HTML files
+          find ./_build/html -type f -name "*.html" -exec sed -i '/<\/body>/i <script src="assets/script.js"></script>' {} \;
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
