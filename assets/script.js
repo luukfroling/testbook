@@ -32,7 +32,6 @@ let loadItem = (body, likes) => {
     } else {
         let a = document.createElement("a");
         a.innerHTML = "👍" + likes;
-        a.target.style.border = '1px solid black';
         document.getElementsByClassName("flex items-center flex-grow w-auto")[0].appendChild(a)
         return; 
     }
