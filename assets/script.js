@@ -3,6 +3,7 @@
 */
 
 let hasLiked = false; 
+let likes
 
 document.addEventListener("DOMContentLoaded", function() {
     // see if user has liked => use local storage as we are using a non userdata database. 
@@ -39,8 +40,8 @@ let onDislike = () => {
 *   we check again after a second to see if our data is displayed properly.  The strings can be changed, then also change string in md file.
 */
 
-let loadItem = (body, likes) => {
-    
+let loadItem = (body, _likes) => {
+    likes = _likes;
     console.log(likes)
     body = document.body.innerHTML;
     let stringToFind = "Loading...";
