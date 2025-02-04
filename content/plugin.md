@@ -5,6 +5,7 @@ There is a bunch of new text here
 ```
 
 copying over 
+and adding script
 update
 
 - add plugin for button 

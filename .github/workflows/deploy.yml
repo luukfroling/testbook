@@ -42,6 +42,12 @@ jobs:
           mkdir -p ./_build/html/assets
           cp ./assets/script.js ./_build/html/assets/script.js  # Adjust path as needed
           echo "JavaScript file copied to _build/html/assets/script.js"
+      - name: Inject JavaScript into HTML files
+        run: |
+          # Find all HTML files and inject the script tag with module syntax for JavaScript
+          modified_files=$(find ./_build/html -type f -name "*.html" -exec sed -i '/<\/head>/i import { greet } from "\/assets\/utils.js"; greet();' {} \; -print | wc -l)
+          echo "$modified_files HTML files were modified to include the script."
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
