@@ -1,6 +1,11 @@
 //find and replace "loading likes ..." with "Likes: 0"
 document.addEventListener("DOMContentLoaded", function() {
-    document.body.addEventListener("change", function() {
+    
+        //wait 1 second 
+        setTimeout(function() {
+            console.log("Waited 1 second");
+        }, 1000);
+
         let stringToFind = "Loading...";
         let stringToReplace = "Likes: 0";
         
@@ -9,7 +14,7 @@ document.addEventListener("DOMContentLoaded", function() {
         let bodyNew = body.replace(stringToFind, stringToReplace);
         document.body.innerHTML = bodyNew;
         
-    });    
+  
 });
 
 
