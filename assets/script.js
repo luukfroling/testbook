@@ -34,8 +34,7 @@ let loadItem = (body, likes) => {
         let a = document.createElement("a");
         a.innerHTML = "👍" + likes;
         a.onclick = () => {
-            likes += 1;
-            a.innerHTML = "👍" + (likes);
+            
             addLike();
         }
         document.getElementsByClassName("flex items-center flex-grow w-auto")[0].appendChild(a);
@@ -71,7 +70,11 @@ let addLike = () => {
                    "Content-Type": "application/json"
                }
            })
-           .then(() => {console.log("Likes updated to", newLikes);})
+           .then(() => {
+                console.log("Likes updated to", newLikes);
+                likes += 1;
+                a.innerHTML = "👍" + (likes);
+           })
            .catch(error => console.error("Error updating likes:", error));})
        .catch(error => console.error("Error fetching current likes:", error));   
 }
