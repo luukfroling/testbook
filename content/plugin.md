@@ -7,6 +7,8 @@ have to update all of this to force a reset
 reset
 update
 
+Loading...
+
 - add plugin for button 
 - add outgoing request
 - add incomming request
