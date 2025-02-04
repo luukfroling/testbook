@@ -18,9 +18,11 @@ let loadItem = (body) => {
     //Find string in current page
     if(body.includes(stringToFind)){
         body.replace(stringToFind, intermediateString);
+        document.body.innerHTML = body;
         return setTimeout(loadItem, 1000);
     } else if(body.includes(intermediateString)){
         body.replace(intermediateString, stringToReplace);
+        document.body.innerHTML = body;
         return setTimeout(loadItem, 1000);
     } else {
         return; 
