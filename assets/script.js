@@ -94,28 +94,35 @@ let getLikes = (body) => {
 let parseLikes = (data) => {
     console.log("in parselikes : ", data);
     const key = document.location.pathname.replace(/\//g, "_");
-    if (data == null) {
-        return addPage().then(() => 0);
+    if (data == null || data == undefined) {
+       addPage();
+       return 0; 
     } 
-    return data[key] !== null ? data[key] : addPage().then(() => 0); // Ensure addPage() resolves before returning
+
+    if(data[key] == null || data[key] == undefined){
+        addPage();
+        return 0;
+    }
+
+    if(data[key] != null && data[key] != undefined){
+        return data[key];
+    }
+
 };
 
 // Add to the JSON file in the database
 let addPage = () => {
     let URL = "https://jupyter-book-likes-default-rtdb.europe-west1.firebasedatabase.app/likes.json";
 
-    return fetch(URL, {
+    fetch(URL, {
         method: "PATCH",
         body: JSON.stringify({ [document.location.pathname.replace(/\//g, "_")]: 0 }), // Start with 0 likes
         headers: {
             "Content-Type": "application/json"
         }
     })
-    .then(() => 0) // Ensure the function returns a resolved value
-    .catch(error => {
-        console.error("Error initializing like count:", error);
-        return 0; // Ensure function still returns 0 in case of failure
-    });
+    .then(() =>console.log("Page added to database"))
+    .catch(error => console.error("Error initializing like count:", error));
 };
 
 let changeLike = (change) => {
