@@ -121,19 +121,20 @@ let changeLike = (change) => {
        })
        .then(response => response.json())
        .then(data => {
-           // Increment the likes value
-           let newLikes = data ? data + change : 1; // Update the database with the new likes count
-           fetch(databaseURL, {
-               method: "PUT", // Overwrite with new value
-               body: JSON.stringify(newLikes),
-               headers: {
-                   "Content-Type": "application/json"
-               }
-           })
-           .then(() => {
-                console.log("Likes updated to", newLikes);
-           })
-           .catch(error => console.error("Error updating likes:", error));})
+            data = data[document.location.pathname.replace(/\//g, "_")];
+            // Increment the likes value
+            let newLikes = data ? data + change : 1; // Update the database with the new likes count
+            fetch(databaseURL, {
+                method: "PUT", // Overwrite with new value
+                body: JSON.stringify(newLikes),
+                headers: {
+                    "Content-Type": "application/json"
+                }
+            })
+            .then(() => {
+                    console.log("Likes updated to", newLikes);
+            })
+            .catch(error => console.error("Error updating likes:", error));})
        .catch(error => console.error("Error fetching current likes:", error));   
 }
 
