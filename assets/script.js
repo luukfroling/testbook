@@ -94,7 +94,7 @@ let getLikes = (body) => {
 let parseLikes = (data) => {
     console.log("in parselikes : ", data);
     const key = document.location.pathname.replace(/\//g, "_");
-    return data[key] !== undefined ? data[key] : addPage().then(() => 0); // Ensure addPage() resolves before returning
+    return data[key] !== null ? data[key] : addPage().then(() => 0); // Ensure addPage() resolves before returning
 };
 
 // Add to the JSON file in the database
