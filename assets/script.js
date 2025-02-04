@@ -36,7 +36,8 @@ let loadItem = (body, likes) => {
         a.onclick = () => {
             likes += 1;
             a.innerHTML = "👍" + (likes);
-            a.background = "green";
+            a.style.backgroundColor = "#90ee90";
+            a.onclick = null;
             addLike()
         }
         document.getElementsByClassName("flex items-center flex-grow w-auto")[0].appendChild(a);
