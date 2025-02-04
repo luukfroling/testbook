@@ -40,7 +40,7 @@ let loadItem = (body, likes) => {
 /* Load data from github json file
 *
 */
-const databaseURL = "https://jupyter-book-likes-default-rtdb.europe-west1.firebasedatabase.app/.json";
+const databaseURL = "https://jupyter-book-likes-default-rtdb.europe-west1.firebasedatabase.app/likes.json";
 
 
 let getLikes = (body) => {
