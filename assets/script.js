@@ -19,8 +19,8 @@ let onLike = () => {
     let likeButton = document.getElementById("likeButton");
     likeButton.style.backgroundColor = "#90ee90";
     likeButton.onclick = onDislike;
-    likeButton.innerHTML = "👍" + (likes+1) + " ";
     likes += 1;
+    likeButton.innerHTML = "👍" + (likes) + " ";
     changeLike(1)
     localStorage.setItem('hasLiked', JSON.stringify(true));
 }
@@ -29,8 +29,8 @@ let onDislike = () => {
     let likeButton = document.getElementById("likeButton");
     likeButton.style.backgroundColor = "#ffffff";
     likeButton.onclick = onLike;
-    likeButton.innerHTML = "👍" + likes + " ";
     likes -= 1;
+    likeButton.innerHTML = "👍" + likes + " ";
     changeLike(-1);
     localStorage.setItem('hasLiked', JSON.stringify(false));
 }
@@ -119,26 +119,24 @@ let addPage = () => {
 };
 
 let changeLike = (change) => {
-    fetch(databaseURL, {
-        method: "GET"
-       })
-       .then(response => response.json())
-       .then(data => {
-            data = data[document.location.pathname.replace(/\//g, "_")];
-            // Increment the likes value
-            let newLikes = data ? data + change : 1; // Update the database with the new likes count
-            fetch(databaseURL, {
-                method: "PUT", // Overwrite with new value
-                body: JSON.stringify(newLikes),
+    const key = document.location.pathname.replace(/\//g, "_");
+    fetch(databaseURL)
+        .then(response => response.json())
+        .then(data => {
+            let currentLikes = data && data[key] ? data[key] : 0;
+            let newLikes = currentLikes + change;
+
+            return fetch(databaseURL, {
+                method: "PATCH", // PATCH instead of PUT to update only the specific key
+                body: JSON.stringify({ [key]: newLikes }),
                 headers: {
                     "Content-Type": "application/json"
                 }
-            })
-            .then(() => {
-                    console.log("Likes updated to", newLikes);
-            })
-            .catch(error => console.error("Error updating likes:", error));})
-       .catch(error => console.error("Error fetching current likes:", error));   
-}
+            });
+        })
+        .then(() => console.log("Likes updated for", key))
+        .catch(error => console.error("Error updating likes:", error));
+};
+
 
 
