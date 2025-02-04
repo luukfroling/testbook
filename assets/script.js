@@ -81,15 +81,20 @@ let loadItem = (body, _likes) => {
 /* Load data from github json file
 *
 */
-const databaseURL = "https://jupyter-book-likes-default-rtdb.europe-west1.firebasedatabase.app/likes.json";
+const databaseURL = "https://jupyter-book-likes-default-rtdb.europe-west1.firebasedatabase.app/.json";
 
 
 let getLikes = (body) => {
     fetch(databaseURL)
-    .then(response => response.json())
-    .then(data => loadItem(body, data))	
-    .catch(error => console.error("Error loading JSON:", error));
-}
+        .then(response => response.json())
+        .then(data => loadItem(body, parseLikes(data)))	
+        .catch(error => console.error("Error loading JSON:", error));
+};
+
+let parseLikes = (data) => {
+    const key = document.location.pathname.replace(/\//g, "_");
+    return data[key] !== undefined ? data[key] : addPage().then(() => 0); // Ensure addPage() resolves before returning
+};
 
 let changeLike = (change) => {
     fetch(databaseURL, {
