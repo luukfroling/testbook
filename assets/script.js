@@ -81,7 +81,7 @@ let loadItem = (body, _likes) => {
 /* Load data from github json file
 *
 */
-const databaseURL = "https://jupyter-book-likes-default-rtdb.europe-west1.firebasedatabase.app/.json";
+const databaseURL = "https://jupyter-book-likes-default-rtdb.europe-west1.firebasedatabase.app/likes.json";
 
 
 let getLikes = (body) => {
@@ -92,6 +92,7 @@ let getLikes = (body) => {
 };
 
 let parseLikes = (data) => {
+    console.log("in parselikes : ", data);
     const key = document.location.pathname.replace(/\//g, "_");
     return data[key] !== undefined ? data[key] : addPage().then(() => 0); // Ensure addPage() resolves before returning
 };
@@ -102,7 +103,7 @@ let addPage = () => {
 
     return fetch(URL, {
         method: "PATCH",
-        body: JSON.stringify({ [document.location.pathname.replace(/\//g, "_")]: 1 }), // Start with 1 like
+        body: JSON.stringify({ [document.location.pathname.replace(/\//g, "_")]: 0 }), // Start with 0 likes
         headers: {
             "Content-Type": "application/json"
         }
