@@ -4,10 +4,7 @@ There is a bunch of new text here
 <!-- ```{mydirective} mywordchangedagain
 ``` -->
 
-copying over 
-and adding script
-added the things
-FINAL CALL
+reset
 update
 
 - add plugin for button 
