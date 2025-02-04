@@ -34,10 +34,11 @@ let loadItem = (body, likes) => {
         let a = document.createElement("a");
         a.innerHTML = "👍" + likes;
         a.onclick = () => {
-            a.innerHTML = "👍" + (likes + 1);
-            console.log("clicked!!");	
+            likes += 1;
+            a.innerHTML = "👍" + (likes);
+            addLike();
         }
-        document.getElementsByClassName("flex items-center flex-grow w-auto")[0].prepend(a);
+        document.getElementsByClassName("flex items-center flex-grow w-auto")[0].appendChild(a);
         return; 
     }
 }
@@ -55,24 +56,23 @@ let getLikes = (body) => {
     .catch(error => console.error("Error loading JSON:", error));
 }
 
-// fetch(databaseURL, {
-//     method: "GET"
-//   })
-//   .then(response => response.json())
-//   .then(data => {
-//     // Increment the likes value
-//     let newLikes = data ? data + 1 : 1;
-//     // Update the database with the new likes count
-//     fetch(databaseURL, {
-//       method: "PUT", // Overwrite with new value
-//       body: JSON.stringify(newLikes),
-//       headers: {
-//         "Content-Type": "application/json"
-//       }
-//     })
-//     .then(() => {
-//       console.log("Likes updated to", newLikes);
-//     })
-//     .catch(error => console.error("Error updating likes:", error));
-//   })
-//   .catch(error => console.error("Error fetching current likes:", error));
+let addLike = () => {
+    fetch(databaseURL, {
+        method: "GET"
+       })
+       .then(response => response.json())
+       .then(data => {
+           // Increment the likes value
+           let newLikes = data ? data + 1 : 1; // Update the database with the new likes count
+           fetch(databaseURL, {
+               method: "PUT", // Overwrite with new value
+               body: JSON.stringify(newLikes),
+               headers: {
+                   "Content-Type": "application/json"
+               }
+           })
+           .then(() => {console.log("Likes updated to", newLikes);})
+           .catch(error => console.error("Error updating likes:", error));})
+       .catch(error => console.error("Error fetching current likes:", error));   
+}
+
