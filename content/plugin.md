@@ -1,5 +1,6 @@
 # My demo page
 
+(klik niet al te snel op de like knop, dan gaat ie kapot)
 
 Keep in mind this is a work in progress, the database is -not- safe which is for now not an issue as we do not save any user information. However anyone can read the source code and rerun the fetch request as many times as they like. This is a proof of concept as I had the db running for a different project. 
 

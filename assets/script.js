@@ -19,11 +19,16 @@ let onLike = () => {
     let likeButton = document.getElementById("likeButton");
 
     likeButton.style.backgroundColor = "#90ee90"; // light green
-    likeButton.onclick = onDislike;
+    likeButton.onclick = () => {};
 
     likes += 1;
     likeButton.innerHTML = "👍" + likes + " ";
     changeLike(1);
+
+    //3 second cooldown on the like button
+    setTimeout(() => { 
+        likeButton.onclick = onDislike;
+    }, 3000);
 
     localStorage.setItem(`hasLiked_${path}`, JSON.stringify(true)); //Set local storage for later
 }
@@ -32,11 +37,16 @@ let onDislike = () => {
     let likeButton = document.getElementById("likeButton");
 
     likeButton.style.backgroundColor = "#ffffff";   // white
-    likeButton.onclick = onLike;
+    likeButton.onclick = () => {};
 
     likes -= 1;
     likeButton.innerHTML = "👍" + likes + " ";
     changeLike(-1);
+
+    //3 second cooldown on the like button
+    setTimeout(() => { 
+        likeButton.onclick = onLike;
+    }, 3000);
 
     localStorage.setItem(`hasLiked_${path}`, JSON.stringify(false));    //Set local storage again
 }
