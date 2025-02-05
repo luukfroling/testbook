@@ -1,40 +1,44 @@
 /*
-* 03/02/2025, Luuk Fröling
+* 03/02/2025, Luuk Fröling - like button script
 */
 
 let likes;
 let hasLiked;
+let path = document.location.pathname.replace(/\//g, "_"); 
 
+//function which runs when doc loaded
 document.addEventListener("DOMContentLoaded", function() {
-    let path = document.location.pathname.replace(/\//g, "_");
-    hasLiked = JSON.parse(localStorage.getItem(`hasLiked_${path}`)) || false;
-
-    console.log("Has liked:", hasLiked); 
+    hasLiked = JSON.parse(localStorage.getItem(`hasLiked_${path}`)) || false; //Check if liked before
+    console.log("Has liked:", hasLiked);
     
     let body;
     getLikes(body);
 });
 
 let onLike = () => {
-    let path = document.location.pathname.replace(/\//g, "_");
     let likeButton = document.getElementById("likeButton");
-    likeButton.style.backgroundColor = "#90ee90";
+
+    likeButton.style.backgroundColor = "#90ee90"; // light green
     likeButton.onclick = onDislike;
+
     likes += 1;
     likeButton.innerHTML = "👍" + likes + " ";
     changeLike(1);
-    localStorage.setItem(`hasLiked_${path}`, JSON.stringify(true));
+
+    localStorage.setItem(`hasLiked_${path}`, JSON.stringify(true)); //Set local storage for later
 }
 
 let onDislike = () => {
-    let path = document.location.pathname.replace(/\//g, "_");
     let likeButton = document.getElementById("likeButton");
-    likeButton.style.backgroundColor = "#ffffff";
+
+    likeButton.style.backgroundColor = "#ffffff";   // white
     likeButton.onclick = onLike;
+
     likes -= 1;
     likeButton.innerHTML = "👍" + likes + " ";
     changeLike(-1);
-    localStorage.setItem(`hasLiked_${path}`, JSON.stringify(false));
+
+    localStorage.setItem(`hasLiked_${path}`, JSON.stringify(false));    //Set local storage again
 }
 
 
@@ -45,12 +49,11 @@ let onDislike = () => {
 
 let loadItem = (body, _likes) => {
     likes = _likes;
-    console.log(likes)
-    body = document.body.innerHTML;
+    body = document.body.innerHTML; //Reload as jupyter book tends to make changes
+
+    //FOR EXAMPLE MIDDLE OF PAGE
     let stringToFind = "Loading...";
     let intermediateString = "Loading.. "
-
-    // replace with string containing number of likes and button to add a like
     let stringToReplace = "Likes: " + likes + "<button id='likeButton'>👍 Like</button>";
     
     //Find string in current page
@@ -59,7 +62,7 @@ let loadItem = (body, _likes) => {
         return setTimeout(() => loadItem(body, likes), 1000);
     } else if(body.includes(intermediateString)){
         document.body.innerHTML = body.replace(intermediateString, stringToReplace);;
-        return setTimeout(() => loadItem(body, likes), 1000);
+        return setTimeout(() => loadItem(body, likes), 1000);                           //END EXAMPLE MIDDLE OF PAGE
     } else {
         let a = document.createElement("button");
         a.innerHTML = "👍" + likes;
@@ -96,7 +99,7 @@ let getLikes = (body) => {
 
 let parseLikes = (data) => {
     console.log("in parselikes : ", data);
-    const key = document.location.pathname.replace(/\//g, "_");
+    const key = path;
     if (data == null || data == undefined) {
        addPage();
        return 0; 
@@ -119,7 +122,7 @@ let addPage = () => {
 
     fetch(URL, {
         method: "PATCH",
-        body: JSON.stringify({ [document.location.pathname.replace(/\//g, "_")]: 0 }), // Start with 0 likes
+        body: JSON.stringify({ [path]: 0 }), // Start with 0 likes
         headers: {
             "Content-Type": "application/json"
         }
@@ -129,7 +132,7 @@ let addPage = () => {
 };
 
 let changeLike = (change) => {
-    const key = document.location.pathname.replace(/\//g, "_");
+    const key = path;
     fetch(databaseURL)
         .then(response => response.json())
         .then(data => {
