@@ -5,7 +5,7 @@ const plugin = {
         name: 'transform-typography',
         doc: 'An example transform that rewrites bold text as text with emphasis.',
         stage: 'document',
-        transform: (tree, vfile) => {
+        plugin: (_, utils) => (node, vfile) => {
             console.log(tree, vfile);
         },
       },
@@ -41,3 +41,4 @@ const plugin = {
 //   };
   
 //   export default plugin;
+
