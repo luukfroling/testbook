@@ -43,7 +43,7 @@ jobs:
       # Add custom assets (JS/CSS) into HTML files using a Python script
       - name: Inject Assets into HTML files
         run: |
-          python3 scripts/inject_assets.py  # Call the Python script to inject the assets
+          python3 scripts/add_assets.py  # Call the Python script to inject the assets
 
       # Copy all assets (JavaScript, CSS) to _build/html/assets
       - name: Copy assets to _build/html/assets
