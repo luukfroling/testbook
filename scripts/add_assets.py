@@ -40,7 +40,7 @@ def inject_assets():
                     new_content = content[:head_close_index] + f"\n{file_tag}\n" + content[head_close_index:]
 
                     with open(file_path, 'w') as file:
-                        print("adding", file_tag, " to ", file_name)
+                        print("adding", file_tag, " to ", file_path)
                         file.write(new_content)
 
                     print(f"Injected {file_tag} into {file_name}.")
