@@ -1,15 +1,15 @@
-const tudelftPlugin = {
-    name: "tudelft-style-plugin",
-    transform: (tree, vfile) => {
-      vfile.data.frontmatter = vfile.data.frontmatter || {};
-      vfile.data.frontmatter.extra_head = vfile.data.frontmatter.extra_head || [];
-      vfile.data.frontmatter.extra_head.push('<link rel="stylesheet" href="/assets/tudelft_style.css">');
-    },
-  };
-  
-  const plugin = {
-    name: "TU Delft Style Plugin",
-    transforms: [tudelftPlugin],
+const plugin = {
+    name: 'Strong to emphasis',
+    transforms: [
+      {
+        name: 'transform-typography',
+        doc: 'An example transform that rewrites bold text as text with emphasis.',
+        stage: 'document',
+        plugin: (_, utils) => (node) => {
+          console.log(utils);
+        },
+      },
+    ],
   };
   
   export default plugin;
