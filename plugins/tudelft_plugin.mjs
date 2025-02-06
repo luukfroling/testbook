@@ -6,7 +6,7 @@ const plugin = {
         doc: 'An example transform that rewrites bold text as text with emphasis.',
         stage: 'document',
         plugin: (_, utils) => (node, vfile) => {
-            console.log(tree, vfile);
+            console.log(node, vfile);
         },
       },
     ],
