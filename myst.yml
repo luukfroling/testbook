@@ -1,7 +1,9 @@
 # See docs at: https://mystmd.org/guide/frontmatter
 version: 1
 project:
-  id: 8ee5c516-6a3e-4733-abf0-d96d994c732e
+  id: 8ee5c516-6a3e-4733-abf0-d96d994c732e ,
+  plugins:
+    - plugins/tudelft_plugin.mjs
   # title:
   # description:
   # keywords: []
