@@ -38,18 +38,29 @@ jobs:
       - name: Build HTML Assets
         run: myst build --html
 
+      # Add custom assets (JS/CSS) into HTML files using a Python script
+      - name: Inject Assets into HTML files
+        run: |
+          python3 inject_assets.py  # Call the Python script to inject the assets
 
-      # Add custom javascript
-      - name: Copy JavaScript file to _build/html/assets
+      # Copy all assets (JavaScript, CSS) to _build/html/assets
+      - name: Copy assets to _build/html/assets
         run: |
           mkdir -p ./_build/html/assets
-          cp ./assets/script.js ./_build/html/assets/script.js  # Adjust path as needed
-          echo "JavaScript file copied to _build/html/assets/script.js"
-      - name: Inject JavaScript into HTML files
-        run: |
-          # Find all HTML files and inject the script tag with module syntax for JavaScript
-          modified_files=$(find ./_build/html -type f -name "*.html" -exec sed -i '/<\/head>/i console.log("injected!"); </script><script src="./assets/script.js">' {} \; -print | wc -l)
-          echo "$modified_files HTML files were modified to include the script."
+          cp -r ./assets/* ./_build/html/assets
+          echo "Assets copied to _build/html/assets"
+
+      # Add custom javascript
+      # - name: Copy JavaScript file to _build/html/assets
+      #   run: |
+      #     mkdir -p ./_build/html/assets
+      #     cp ./assets/script.js ./_build/html/assets/script.js  # Adjust path as needed
+      #     echo "JavaScript file copied to _build/html/assets/script.js"
+      # - name: Inject JavaScript into HTML files
+      #   run: |
+      #     # Find all HTML files and inject the script tag with module syntax for JavaScript
+      #     modified_files=$(find ./_build/html -type f -name "*.html" -exec sed -i '/<\/head>/i console.log("injected!"); </script><script src="./assets/script.js">' {} \; -print | wc -l)
+      #     echo "$modified_files HTML files were modified to include the script."
       - name: Add Cache-Busting to Scripts & CSS
         run: |
           HASH=$(git rev-parse --short HEAD)
