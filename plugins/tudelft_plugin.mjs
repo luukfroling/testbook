@@ -4,7 +4,7 @@ const plugin = {
       {
         name: 'transform-typography',
         doc: 'An example transform that rewrites bold text as text with emphasis.',
-        stage: 'document',
+        stage: 'post-process',
         plugin: (_, utils) => (node, vfile) => {
             console.log(node, vfile);
             vfile.data.frontmatter = vfile.data.frontmatter || {};
