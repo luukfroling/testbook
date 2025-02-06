@@ -1,5 +1,5 @@
 const plugin = {
-    name: 'Strong to emphasis',
+    name: 'retry',
     transforms: [
       {
         name: 'transform-typography',
