@@ -10,6 +10,7 @@ const plugin = {
             vfile.data.frontmatter = vfile.data.frontmatter || {};
             vfile.data.frontmatter.extra_head = vfile.data.frontmatter.extra_head || [];
             vfile.data.frontmatter.extra_head.push('<link rel="stylesheet" href="/assets/tudelft_style.css">');
+            console.log(node, vfile);
         },
       },
     ],
