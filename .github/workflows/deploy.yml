@@ -37,6 +37,8 @@ jobs:
         run: npm install -g mystmd
       - name: Build HTML Assets
         run: myst build --html
+      - name: Check directory contents
+        run: ls -R 
 
       # Add custom assets (JS/CSS) into HTML files using a Python script
       - name: Inject Assets into HTML files
