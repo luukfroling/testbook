@@ -1,5 +1,14 @@
 # Admonitions
 
+
+:::{note}
+Books are usually written on paper ... But Jupyter Book can create _websites_!
+:::
+
+```{note}
+testestest
+```
+
 ::::::{important}
 The examples are taken from the original documentation of the Sphinx book theme, available at their [website](https://sphinx-book-theme.readthedocs.io/en/stable/reference/kitchen-sink/admonitions.html).
 ::::::
