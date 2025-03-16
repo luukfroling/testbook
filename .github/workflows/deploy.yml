@@ -37,20 +37,18 @@ jobs:
         run: npm install -g mystmd
       - name: Build HTML Assets
         run: myst build --html
-      - name: Check directory contents
-        run: ls -R 
 
       # Add custom assets (JS/CSS) into HTML files using a Python script
-      - name: Inject Assets into HTML files
-        run: |
-          python3 scripts/add_assets.py  # Call the Python script to inject the assets
+      # - name: Inject Assets into HTML files
+      #   run: |
+      #     python3 scripts/add_assets.py  # Call the Python script to inject the assets
 
-      # Copy all assets (JavaScript, CSS) to _build/html/assets
-      - name: Copy assets to _build/html/assets
-        run: |
-          mkdir -p ./_build/html/assets
-          cp -r ./assets/* ./_build/html/assets
-          echo "Assets copied to _build/html/assets"
+      # # Copy all assets (JavaScript, CSS) to _build/html/assets
+      # - name: Copy assets to _build/html/assets
+      #   run: |
+      #     mkdir -p ./_build/html/assets
+      #     cp -r ./assets/* ./_build/html/assets
+      #     echo "Assets copied to _build/html/assets"
 
       # Add custom javascript
       # - name: Copy JavaScript file to _build/html/assets
