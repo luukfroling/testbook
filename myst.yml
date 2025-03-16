@@ -12,4 +12,6 @@ project:
   # To autogenerate a Table of Contents, run "jupyter book init --write-toc"
 site:
   template: book-theme
+  options:
+    style: ./style/tudelft_stylesheet.css
   
