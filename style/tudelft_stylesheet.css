@@ -84,3 +84,8 @@ em {
     background: black;
 }
 
+p {
+    color: var(--tud-raspberry);
+    background: var(--tud-yellow);
+}
+
