@@ -1,3 +1,86 @@
+:root {
+    --tud-raspberry: rgb(165,0,52);
+    --tud-raspberry-min: rgb(165,0,52,3%);
+    --tud-raspberry-mid: rgb(165,0,52,20%);
+    --tud-yellow: #FFB81C;
+    --tud-yellow-min: #FFB81C05;
+    --tud-yellow-mid: #FFB81C20;
+    --tud-darkGreen: #009B77;
+    --tud-darkGreen-min: #009B7710;
+    --tud-darkGreen-mid: #009B7725;
+    --tud-blue: #0076C2;
+    --tud-blue-min: #0076C210;
+    --tud-blue-mid: #0076C225;
+    --tud-black: var(--pst-color-text-base);
+    --tud-black-min: #56565605;
+    --tud-black-mid: #56565625;
+    --tud-orange: #EC6842;
+    --tud-orange-min: #EC684210;
+    --tud-orange-mid: #EC684225;
+    --tud-cyan: #00A6D6;
+    --tud-cyan-min: #00A6D610;
+    --tud-cyan-mid: #00A6D625;
+    --tud-gray: #7d7d7d;
+    --tud-gray-min: #7d7d7d05;
+    --tud-gray-mid: #7d7d7d20;
+    --tud-purple: #6f1d77;
+    --tud-purple-min: #6f1d7705;
+    --tud-purple-mid: #6f1d7720;
+    --tud-pink: #EF60A3;
+    --tud-pink-min: #EF60A310;
+    --tud-pink-mid: #EF60A325;
+    --tud-red: #E03C31;
+    --tud-red-min: #E03C3110;
+    --tud-red-mid: #E03C3125;
+    --tud-green: #6CC24A;
+    --tud-green-min: #6CC24A10;
+    --tud-green-mid: #6CC24A25;
+    --tud-darkBlue: #0C2340;
+    --tud-darkBlue-min: #0C234010;
+    --tud-darkBlue-mid: #0C234025;
+    }
+
+html[data-theme="dark"] {
+    --tud-raspberry: #ffa7f5;
+    --tud-raspberry-min: #ffa7f503;
+    --tud-raspberry-mid: #ffa7f520;
+    --tud-yellow: #a43a00;
+    --tud-yellow-min: #a43a0005;
+    --tud-yellow-mid: #a43a0020;
+    --tud-darkGreen: #00bd87;
+    --tud-darkGreen-min: #00bd8710;
+    --tud-darkGreen-mid: #00bd8725;
+    --tud-blue: #09baff;
+    --tud-blue-min: #09baff10;
+    --tud-blue-mid: #09baff25;
+    --tud-orange: #ff581f;
+    --tud-orange-min: #ff581f10;
+    --tud-orange-mid: #ff581f25;
+    --tud-cyan: #00a7ef;
+    --tud-cyan-min: #00a7ef10;
+    --tud-cyan-mid: #00a7ef25;
+    --tud-gray: #828282;
+    --tud-gray-min: #82828205;
+    --tud-gray-mid: #82828220;
+    --tud-purple: #ffa7ff;
+    --tud-purple-min: #ffa7ff05;
+    --tud-purple-mid: #ffa7ff20;
+    --tud-pink: #ff47ab;
+    --tud-pink-min: #ff47ab10;
+    --tud-pink-mid: #ff47ab25;
+    --tud-red: #ff7161;
+    --tud-red-min: #ff716110;
+    --tud-red-mid: #ff716125;
+    --tud-green: #008000;
+    --tud-green-min: #00800010;
+    --tud-green-mid: #00800025;
+    --tud-darkBlue: #c1e3ff;
+    --tud-darkBlue-min: #c1e3ff10;
+    --tud-darkBlue-mid: #c1e3ff25;
+}
+
+
 em { 
     background: black;
 }
+

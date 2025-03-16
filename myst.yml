@@ -13,5 +13,5 @@ project:
 site:
   template: book-theme
   options:
-    style: ./style/tudelft_stylesheet.css
+    style: /style/tudelft_stylesheet.css
   
